@@ -603,8 +603,6 @@ body.in-flight .dta-aurora .dta-aurora-texture{animation-play-state:paused}
     }
     if (!teaser.getAttribute("src")) teaser.src = teaser.dataset.src;
     teaser.currentTime = 0;
-    teaser.defaultPlaybackRate = 2;
-    teaser.playbackRate = 2;
     teaser.onended = () => revealTrack(run);
     teaser.onerror = () => revealTrack(run);
     teaserTimeout = setTimeout(() => revealTrack(run), 8000);
