@@ -51,6 +51,8 @@ html,body{background:#242423!important;color:#BFBEC2!important;font-family:Zalan
 @media(max-width:700px){.dta-logo-sequence{width:75vw;height:42vh}}
 @media(prefers-reduced-motion:reduce){.dta-logo-start{animation:none;opacity:0}.dta-logo-end{animation:none;opacity:1}}
 /* Ancienne règle supprimée : elle bloquait l’animation. */
+
+#dta-terminal,#dta-terminal * ,#dta-terminal *::before,#dta-terminal *::after{font-family:DTA-Backpacker,monospace!important;font-variation-settings:normal!important}
 </style><style>
 
 @media(max-width:700px){.dta-asset-strip{min-height:100px;padding:26px 5vw}.dta-asset-strip img{width:min(280px,78vw)}}
@@ -478,11 +480,11 @@ body.in-flight .dta-aurora .dta-aurora-texture{animation-play-state:paused}
  width:min(54vw,210px);margin:0;
 }
 .dta-password input{
- width:100%;box-sizing:border-box;border:0;border-bottom:1px solid #BFBEC260;
- border-radius:0;background:transparent;color:#BFBEC2;padding:9px 8px;
+ width:100%;box-sizing:border-box;border:0;border-bottom:1px solid #D94C2A;
+ border-radius:0;background:#D94C2A;color:#242423;padding:9px 8px;caret-color:#242423;
  font:16px "Courier New",monospace;text-align:center;outline-offset:4px;
 }
-.dta-password input::placeholder{color:#BFBEC280;font-size:12px;letter-spacing:.15em}
+.dta-password input::placeholder{color:#242423;opacity:1;font-size:12px;letter-spacing:.15em}
 .dta-password input:focus-visible{outline:1px solid #D94C2A}
 .dta-password input[aria-invalid="true"]{border-color:#D94C2A}
 .dta-password-status{margin:4px 0 0;min-height:16px;text-align:center;font:11px "Courier New",monospace;color:#D94C2A}
@@ -490,7 +492,7 @@ body.in-flight .dta-aurora .dta-aurora-texture{animation-play-state:paused}
  position:fixed;inset:0;z-index:10000;overflow-y:auto;overscroll-behavior:contain;
  box-sizing:border-box;background:#000;color:#86dd9d;
  padding:clamp(30px,7vw,100px) clamp(20px,7vw,100px);
- font:clamp(13px,1.5vw,17px)/1.7 "Courier New",monospace;
+ font:clamp(13px,1.5vw,17px)/1.7 DTA-Backpacker,monospace;
  scrollbar-color:#254d31 #000;
 }
 #dta-terminal[hidden]{display:none}
