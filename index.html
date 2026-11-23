@@ -472,6 +472,34 @@ body.in-flight .dta-aurora .dta-aurora-texture{animation-play-state:paused}
  .dta-social-links a{width:40px;height:44px}
  .dta-social-links svg{width:18px;height:18px}
 }
+</style><style>.dta-password{
+ position:absolute;left:50%;transform:translateX(-50%);
+ bottom:calc(clamp(42px,5vw,68px) + 66px);z-index:5;
+ width:min(54vw,210px);margin:0;
+}
+.dta-password input{
+ width:100%;box-sizing:border-box;border:0;border-bottom:1px solid #BFBEC260;
+ border-radius:0;background:transparent;color:#BFBEC2;padding:9px 8px;
+ font:16px "Courier New",monospace;text-align:center;outline-offset:4px;
+}
+.dta-password input::placeholder{color:#BFBEC280;font-size:12px;letter-spacing:.15em}
+.dta-password input:focus-visible{outline:1px solid #D94C2A}
+.dta-password input[aria-invalid="true"]{border-color:#D94C2A}
+.dta-password-status{margin:4px 0 0;min-height:16px;text-align:center;font:11px "Courier New",monospace;color:#D94C2A}
+#dta-terminal{
+ position:fixed;inset:0;z-index:10000;overflow-y:auto;overscroll-behavior:contain;
+ box-sizing:border-box;background:#000;color:#86dd9d;
+ padding:clamp(30px,7vw,100px) clamp(20px,7vw,100px);
+ font:clamp(13px,1.5vw,17px)/1.7 "Courier New",monospace;
+ scrollbar-color:#254d31 #000;
+}
+#dta-terminal[hidden]{display:none}
+#dta-terminal-text{max-width:900px;margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;text-shadow:0 0 6px #86dd9d30}
+#dta-terminal-text::after{content:"▌";animation:dta-terminal-cursor 1s steps(1) infinite}
+.dta-terminal-close{position:fixed;top:12px;right:16px;border:0;background:#000;color:#86dd9d;padding:10px;font:22px/1 monospace;cursor:pointer}
+@keyframes dta-terminal-cursor{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){#dta-terminal-text::after{animation:none}}
+@media(max-height:560px){.dta-password{left:16px;transform:none;width:160px;bottom:calc(clamp(42px,5vw,68px) + 12px)}}
 </style></head><body><svg aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden">
   <filter id="dta-liquid-waves" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
     <feTurbulence id="dta-wave-noise" type="fractalNoise" baseFrequency="0.0035 0.007" numOctaves="2" seed="8" result="waves"/>
@@ -541,6 +569,10 @@ body.in-flight .dta-aurora .dta-aurora-texture{animation-play-state:paused}
   </div>
 </div>
   </div></section>
+<form class="dta-password" aria-label="Accès secret">
+<input type="password" aria-label="Password" placeholder="PASSWORD" autocomplete="off" autocapitalize="off" spellcheck="false">
+<p class="dta-password-status" role="status"></p>
+</form>
 <nav class="dta-social-links" aria-label="Drift Them All — réseaux sociaux et contact"><a href="https://www.instagram.com/drift.them.all/" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></a><a href="https://driftall.bandcamp.com/" aria-label="Bandcamp" title="Bandcamp" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5H0z"/></svg></a><a href="https://soundcloud.com/drift-them-all" aria-label="SoundCloud" title="SoundCloud" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.999 14.165c-.052 1.796-1.612 3.169-3.4 3.169h-8.18a.68.68 0 0 1-.675-.683V7.862a.747.747 0 0 1 .452-.724s.75-.513 2.333-.513a5.364 5.364 0 0 1 2.763.755 5.433 5.433 0 0 1 2.57 3.54c.282-.08.574-.121.868-.12.884 0 1.73.358 2.347.992s.948 1.49.922 2.373ZM10.721 8.421c.247 2.98.427 5.697 0 8.672a.264.264 0 0 1-.53 0c-.395-2.946-.22-5.718 0-8.672a.264.264 0 0 1 .53 0ZM9.072 9.448c.285 2.659.37 4.986-.006 7.655a.277.277 0 0 1-.55 0c-.331-2.63-.256-5.02 0-7.655a.277.277 0 0 1 .556 0Zm-1.663-.257c.27 2.726.39 5.171 0 7.904a.266.266 0 0 1-.532 0c-.38-2.69-.257-5.21 0-7.904a.266.266 0 0 1 .532 0Zm-1.647.77a26.108 26.108 0 0 1-.008 7.147.272.272 0 0 1-.542 0 27.955 27.955 0 0 1 0-7.147.275.275 0 0 1 .55 0Zm-1.67 1.769c.421 1.865.228 3.5-.029 5.388a.257.257 0 0 1-.514 0c-.21-1.858-.398-3.549 0-5.389a.272.272 0 0 1 .543 0Zm-1.655-.273c.388 1.897.26 3.508-.01 5.412-.026.28-.514.283-.54 0-.244-1.878-.347-3.54-.01-5.412a.283.283 0 0 1 .56 0Zm-1.668.911c.4 1.268.257 2.292-.026 3.572a.257.257 0 0 1-.514 0c-.241-1.262-.354-2.312-.023-3.572a.283.283 0 0 1 .563 0Z"/></svg></a><a href="https://www.youtube.com/@driftthemall-followthebird" aria-label="YouTube" title="YouTube" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=drift.them.all%40gmail.com" target="_blank" rel="noopener noreferrer" aria-label="E-mail" title="E-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="1.5"/><path d="m3 5 9 8 9-8"/></svg></a></nav>
 <footer class="dta-marquee dta-page-marquee" aria-label="Drift Them All"><div class="dta-marquee-track" aria-hidden="true"><span class="marquee-label">DRIFT THEM ALL</span><span class="marquee-asset" aria-hidden="true"></span><span class="marquee-label">DRIFT THEM ALL</span><span class="marquee-asset" aria-hidden="true"></span><span class="marquee-label">DRIFT THEM ALL</span><span class="marquee-asset" aria-hidden="true"></span><span class="marquee-label">DRIFT THEM ALL</span><span class="marquee-asset" aria-hidden="true"></span><span class="marquee-label">DRIFT THEM ALL</span><span class="marquee-asset" aria-hidden="true"></span><span class="marquee-label">DRIFT THEM ALL</span><span class="marquee-asset" aria-hidden="true"></span><span class="marquee-label">DRIFT THEM ALL</span><span class="marquee-asset" aria-hidden="true"></span><span class="marquee-label">DRIFT THEM ALL</span><span class="marquee-asset" aria-hidden="true"></span><span class="marquee-label">DRIFT THEM ALL</span><span class="marquee-asset" aria-hidden="true"></span><span class="marquee-label">DRIFT THEM ALL</span><span class="marquee-asset" aria-hidden="true"></span><span class="marquee-label">DRIFT THEM ALL</span><span class="marquee-asset" aria-hidden="true"></span><span class="marquee-label">DRIFT THEM ALL</span><span class="marquee-asset" aria-hidden="true"></span></div></footer></section></main>
 
@@ -757,4 +789,150 @@ window.AUTOHIDE = true;
  const aurora = document.querySelector('.dta-aurora');
  new IntersectionObserver(([entry]) => aurora.classList.toggle('is-visible',entry.isIntersecting)).observe(aurora);
 })();
-</script><script defer src="https://sibforms.com/forms/end-form/build/main.js"></script></body></html>
+</script><script defer src="https://sibforms.com/forms/end-form/build/main.js"></script><section id="dta-terminal" hidden tabindex="-1" aria-label="P600 — paroles"><button class="dta-terminal-close" type="button" aria-label="Retour à la newsletter">×</button><pre id="dta-terminal-text"></pre></section><script type="text/plain" id="dta-lyrics-data">La3b 6, kanhres les lignes, kanfr9 frimates
+Wakha absent, 3arfin 9imti, sma7 Med Hrimat
+Kin li tched, kin lâcha, kin li 7reg, kin li mat
+Makankhliwch les empreintes, kanktbo rap bligat
+
+3ndi rou7 lktabala, la manière w ta style
+Mli kandoz flmatar, kan7s b chi haja hostile
+Ndwi m3a l Fizazi, ykfer w n9der nslem nostique
+Ktaba skhona tropicale, khskom l'anti-moustique
+
+L'courage li fhdrti, sbabo lkhouf li fgelbi
+F kola 9asida, La3b La3bi, Abdelatif Laâbi
+Deuxième souffle, kanglbo l'match flameta
+Rafed ga3 les concepts, lkhdma, zwaj w l'État
+
+Sans limites, kanrappi chgali dmaghi, zéro label
+3ndi malaki flesr, 3ndi l9arin f limen
+Daymen hip-hop pure, 7ydo li syour, khafoni nchn9 keri
+Black Wind pédagogue, ch7al mn bnt w deri m9ari
+
+Kolchi d'Allah, ta haja m dialk, jiti zbat, ghatmot m3ari
+Houda Khtek Black, khalk nta 7alouf, khnzir berri
+Abou 3ala2 t3ra, mzikti bitch w dayra dera
+Kolchi f raso serou, kolchi f kercho sera
+
+Kitz3to fl97ab w kikdbo 3la darhom
+Faux diagnostic, drari ma3rfich chno darhom
+
+Wlad bladi dakho
+Bin sla, l'fitness w l'Bitcoin
+Bnat bladi dakho
+M3a zghb rjlin w sex toys
+
+Ta ana m3akom f nefs l'Moulinex
+Lwatan kliti w bw3tou, Black Wind boulimique
+F kola punch polémique
+Ktaba pessimiste
+
+Dareb 501 f rjli, P6000
+Lwlidat tsnaw speech, khitab tl3 Panenka
+Dima ghdban w ka3i, Nicolas Anelka
+Kat2adpa kilma ki les manifs d'Hong Kong
+
+Blad ljoud w lkaram, sir sawel Jack Lang
+Bro, t'calma, l'koora rah gha passion
+L'blad katfundi 3lmo wladkom, khouty, la natation
+Ra7a hop à l'assayan, kafer b l'État-nation</script><script>(() => {
+  const form = document.querySelector('.dta-password');
+  const input = form.querySelector('input');
+  const status = form.querySelector('[role="status"]');
+  const terminal = document.querySelector('#dta-terminal');
+  const text = document.querySelector('#dta-terminal-text');
+  const main = document.querySelector('main');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  let opening = false;
+  let frame;
+  let previousOverflow;
+  let previousBackground;
+  let previousFocus;
+
+  input.addEventListener('input', () => {
+    input.removeAttribute('aria-invalid');
+    status.textContent = '';
+  });
+
+  async function unlock() {
+    opening = true;
+    previousFocus = document.activeElement;
+    previousOverflow = document.body.style.overflow;
+    previousBackground = document.body.style.background;
+    document.body.style.overflow = 'hidden';
+    document.body.style.background = '#000';
+    main.inert = true;
+    main.querySelectorAll('video').forEach(video => video.pause());
+    if (!reduced.matches) {
+      const parts = [...document.querySelectorAll(
+        '#second-screen .desktop-motion, #second-screen .mac-top, #second-screen .newsletter-texture, #second-screen .dta-brevo, #second-screen .dta-social-links, #second-screen .dta-password, #second-screen .dta-page-marquee'
+      )];
+      const falls = parts.map((part, index) => {
+        const tilt = index % 2 ? -7 : 9;
+        return part.animate([
+          {translate:'0 0', rotate:'0deg', opacity:1},
+          {translate:'0 12px', rotate:tilt/4+'deg', opacity:1, offset:.2},
+          {translate:'0 '+(innerHeight + part.clientHeight)+'px', rotate:tilt+'deg', opacity:0}
+        ], {duration:1100,delay:index*45,easing:'cubic-bezier(.55,0,.95,.55)',fill:'forwards'});
+      });
+      const collapse = main.animate([{opacity:1},{opacity:0}],
+        {duration:1450,easing:'ease-in',fill:'forwards'});
+      await Promise.all([...falls,collapse].map(animation => animation.finished.catch(() => {})));
+      [...falls,collapse].forEach(animation => animation.cancel());
+    }
+    main.hidden = true;
+    terminal.hidden = false;
+    terminal.focus({preventScroll:true});
+    terminal.scrollTop = 0;
+    const lyrics = document.querySelector('#dta-lyrics-data').textContent;
+    if (reduced.matches) {
+      text.textContent = lyrics;
+      return;
+    }
+    const start = performance.now();
+    let count = 0;
+    function type(now) {
+      const next = Math.min(lyrics.length, Math.floor((now-start)/12));
+      if (next > count) {
+        const follow = terminal.scrollHeight-terminal.clientHeight-terminal.scrollTop < 80;
+        text.textContent = lyrics.slice(0,next);
+        count = next;
+        if (follow) terminal.scrollTop = terminal.scrollHeight;
+      }
+      if (count < lyrics.length) frame = requestAnimationFrame(type);
+    }
+    frame = requestAnimationFrame(type);
+  }
+
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    if (!opening && input.value.trim() === 'P600') unlock();
+    else if (!opening) {
+      input.setAttribute('aria-invalid','true');
+      status.textContent = 'Access denied.';
+    }
+  });
+  input.addEventListener('input', () => {
+    if (!opening && input.value === 'P600') unlock();
+  });
+
+  function close() {
+    if (terminal.hidden) return;
+    cancelAnimationFrame(frame);
+    terminal.hidden = true;
+    text.textContent = '';
+    main.hidden = false;
+    main.inert = false;
+    document.body.style.overflow = previousOverflow;
+    document.body.style.background = previousBackground;
+    form.reset();
+    opening = false;
+    previousFocus?.focus({preventScroll:true});
+    document.dispatchEvent(new Event('dta-arrived'));
+  }
+  terminal.querySelector('button').addEventListener('click',close);
+  terminal.addEventListener('keydown',event => {
+    if (event.key === 'Escape') close();
+  });
+})();
+</script></body></html>
